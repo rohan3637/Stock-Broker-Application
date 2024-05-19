@@ -43,18 +43,14 @@ const getUsers = async (req, res) => {
 };
 
 const getFunds = async (req, res) => {
-  console.log(`Bearer ${process.env.ACCESS_TOKEN}`);
-  axios
-    .get("https://api.upstox.com/v2/user/get-funds-and-margin", {
-      Accept: "application/json",
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+  axios.get("https://api.upstox.com/v2/user/get-funds-and-margin", {
+      headers: {
+        Accept: "application/json",
+        Authorization:`Bearer ${process.env.ACCESS_TOKEN}`,
+      },
     })
     .then((response) => {
-      console.log(response.data);
-      return res.status(200).json({
-        success: true,
-        message: response.data,
-      });
+      return res.status(200).json(response.data);
     })
     .catch((error) => {
       return res.status(error.response?.status || 500).json({

@@ -4,6 +4,8 @@ const UpstoxClient = require("upstox-js-sdk");
 const response = require("./response.js");
 const cors = require("cors");
 
+const marketDataRouter = require("./routes/marketData.route.js");
+
 dotenv.config();
 const PORT = process.env.PORT || 5001;
 
@@ -116,6 +118,8 @@ const getMarketQuoteOHLC = (symbol, callback) => {
     }
   );
 };
+
+app.use("/marketData", marketDataRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`);

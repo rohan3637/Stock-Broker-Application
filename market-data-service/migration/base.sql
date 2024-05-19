@@ -1,4 +1,4 @@
-CREATE TABLE if NOT EXISTS youtube.videoData(
+/*CREATE TABLE if NOT EXISTS youtube.videoData(
   id int auto_increment not null primary key,
   title varchar(255) not null,
   description varchar(255),
